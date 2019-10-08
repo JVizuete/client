@@ -1,0 +1,56 @@
+/**
+ *@NApiVersion 2.0
+ *@NScriptType ClientScript
+ */
+define(['N/currentRecord'],
+    function(currentRecord){
+        function fieldChanged(context){
+            var current = context.currentRecord;
+            var valortotal = current.getValue({
+                fieldId:'custentity_tot_pag'
+            });
+            var valorLista = current.getValue({
+                fieldId: 'custentitycustentity_list'
+            });
+
+            var valorDinero = current.getValue({
+                fieldId: 'custentity_freeform_text'
+            });
+
+            if (valorLista === '1'){
+                var res= valorDinero * 5 / 100 + valorDinero;
+                    current.setText({
+                    fieldId: 'custentity_tot_pag',
+                    text: res,
+                    ignoreFieldChange: true
+                });
+
+            }else if (valorLista === '2') {
+                var res= valorDinero * 9 / 100 + valorDinero;
+                current.setText({
+                    fieldId: 'custentity_tot_pag',
+                    text: res,
+                    ignoreFieldChange: true
+                });
+                
+            }else if (valorLista === '3') {
+                var res= valorDinero * 12 / 100 + valorDinero;
+                current.setText({
+                    fieldId: 'custentity_tot_pag',
+                    text: res,
+                    ignoreFieldChange: true
+                });
+
+            }else if (valorLista === '4') {
+                var res= valorDinero * 15 / 100 + valorDinero;
+                current.setText({
+                    fieldId: 'custentity_tot_pag',
+                    text: res,
+                    ignoreFieldChange: true
+                }); 
+            }
+        
+        }
+        return{  fieldChanged : fieldChanged};
+        
+});
